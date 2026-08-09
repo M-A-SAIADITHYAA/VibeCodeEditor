@@ -13,9 +13,44 @@ datasource db {
   url = env("DATABASE_URL")
 }
 
-model  User{
-  id String @id @default(cuid()) @map("_id")
-  name String?
-  email String @unique
+enum Roletype{
+  Admin
+  User
+  Premium_User
 
+}
+
+model  User{
+  id String @id @default(cuid()) @map("_id") //@id means it is a primary key
+  //@default(cuid()) means if it does not have then prisma automatically generate this
+  name String?
+  //The Prisma field is called id, but the actual database field is called _id.
+  email String @unique
+  image String?
+  role Roletype @default(user)
+  accounts Account[]
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+}
+model Account {
+  id                 String  @id @default(cuid())
+  userId             String  @map("user_id")
+  type               String
+  provider           String
+  providerAccountId  String  @map("provider_account_id")
+  refresh_token      String? @db.Text
+  access_token       String? @db.Text
+  expires_at         Int?
+  token_type         String?
+  scope              String?
+  id_token           String? @db.Text
+  session_state      String?
+ 
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+ 
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
 }
