@@ -1,5 +1,5 @@
 import NextAuth from "next-auth"
-import {PrismaAdapter} from "@auth/prisma-adapter"
+import { PrismaAdapter } from "@auth/prisma-adapter"
 import {db} from "@/lib/db"
 import { getUserById } from "./modules/auth/actions"
 import authConfig from "./auth.config"
@@ -110,7 +110,7 @@ if(token.sub && session.user){
   session.user.role = token.role
 }
 }
-  }
+  },
 
   secret: process.env.AUTH_SECRET,
   adapter: PrismaAdapter(db),

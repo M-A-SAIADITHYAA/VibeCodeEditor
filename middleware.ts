@@ -1,4 +1,4 @@
-
+import NextAuth from "next-auth";
 import {
     DEFAULT_LOGIN_REDIRECT,
     apiAuthPrefix,
@@ -42,9 +42,7 @@ export default auth((req) => {
   }
 });
 
-function NextAuth(authConfig: { providers: OAuthConfig<any>[]; }): { auth: any; } {
-    throw new Error("Function not implemented.");
-}
+
 
 export const config = {
   // copied from clerk

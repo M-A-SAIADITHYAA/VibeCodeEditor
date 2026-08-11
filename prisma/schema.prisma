@@ -14,9 +14,9 @@ datasource db {
 }
 
 enum Roletype{
-  Admin
-  User
-  Premium_User
+  AdMIN
+  USER
+  PREMIUM_USER
 
 }
 
@@ -27,7 +27,7 @@ model  User{
   //The Prisma field is called id, but the actual database field is called _id.
   email String @unique
   image String?
-  role Roletype @default(user)
+  role Roletype @default(USER)
   accounts Account[]
 
   createdAt DateTime @default(now())
@@ -36,17 +36,17 @@ model  User{
 
 }
 model Account {
-  id                 String  @id @default(cuid())
+  id                 String  @id @default(cuid()) @map("_id")
   userId             String  @map("user_id")
   type               String
   provider           String
   providerAccountId  String  @map("provider_account_id")
-  refresh_token      String? @db.Text
-  access_token       String? @db.Text
+  refresh_token      String? 
+  access_token       String? 
   expires_at         Int?
   token_type         String?
   scope              String?
-  id_token           String? @db.Text
+  id_token           String? 
   session_state      String?
  
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)

@@ -11,7 +11,7 @@ export const getUserById = async (id:string)=>{
     try{
         const user = await db.user.findUnique({
             where :{
-                _id: id
+                id: id
             },
 
             include:{
@@ -32,7 +32,7 @@ export const getAccountByUserId = async (userId:string)=>{
         const account = await db.account.findFirst({
             where:{
                 userId: userId
-            }.
+            }
 
             
         })
