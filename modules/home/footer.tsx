@@ -1,7 +1,7 @@
 import Link from "next/link";
 
-import { FcGoogle as LucideGoogle } from "react-icons/fc";
-
+// import { FcGoogle as LucideGoogle } from "react-icons/fc";
+import { FaGithub as LucideGithub } from "react-icons/fa";
 
 
 
@@ -10,7 +10,7 @@ export function Footer() {
     {
       href: "#",
       icon: (
-        <LucideGoogle className="w-5 h-5 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors" />
+        <LucideGithub className="w-5 h-5 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors" />
       ),
     },
   ];
@@ -34,7 +34,7 @@ export function Footer() {
 
         {/* Copyright Notice */}
         <p className="text-sm text-zinc-500 dark:text-zinc-400">
-          &copy; {new Date().getFullYear()} Codesnippet. All rights reserved.
+          &copy; {new Date().getFullYear()} Made with ❤️ by Sai Adithyaa. All rights reserved.
         </p>
       </div>
     </footer>
