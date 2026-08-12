@@ -13,8 +13,8 @@ datasource db {
   url = env("DATABASE_URL")
 }
 
-enum Roletype{
-  AdMIN
+enum RoleType{
+  ADMIN
   USER
   PREMIUM_USER
 
@@ -27,43 +27,38 @@ model  User{
   //The Prisma field is called id, but the actual database field is called _id.
   email String @unique
   image String?
-  role Roletype @default(USER)
+  role RoleType @default(USER)
   accounts Account[]
 
   createdAt DateTime @default(now())
 
   updatedAt DateTime @updatedAt
 
+  myPlayground Playground[]
+  Starmark StarMark[]
+
 }
 model Account {
-  id                 String  @id @default(cuid()) @map("_id")
-  userId             String  @map("user_id")
-  type               String
-  provider           String
-  providerAccountId  String  @map("provider_account_id")
-  refresh_token      String? 
-  access_token       String? 
-  expires_at         Int?
-  token_type         String?
-  scope              String?
-  id_token           String? 
-  session_state      String?
- 
+  id                String  @id @default(cuid()) @map("_id")
+  userId            String  @map("user_id")
+  type              String
+  provider          String
+  providerAccountId String
+  refreshToken      String? @map("refresh_token")
+  accessToken       String? @map("access_token")
+  expiresAt         Int?    @map("expires_at")
+  tokenType         String? @map("token_type")
+  scope             String?
+  idToken           String? @map("id_token")
+  sessionState      String? @map("session_state")
+
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
- 
+
   @@unique([provider, providerAccountId])
-  @@map("accounts")
+  @@index([userId])
 }
 
-model Session {
-  id           String   @id @default(cuid()) @map("_id")
-  sessionToken String   @unique
-  userId       String   @map("user_id")
-  expires      DateTime
-  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  @@map("sessions")
-}
 
 model VerificationToken {
   id         String   @id @default(cuid()) @map("_id")
@@ -74,3 +69,45 @@ model VerificationToken {
   @@unique([identifier, token])
   @@map("verification_tokens")
 }
+
+
+enum Templates{
+  REACT 
+  NEXTJS
+  EXPRESS
+  VUE
+  HONO
+  ANGULAR
+}
+
+model Playground{
+  id String @id @default(cuid()) @map("_id")
+  title String
+  description String
+  template Templates @default(REACT)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  userId String
+
+  user User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  Starmark StarMark[]
+
+  //template files
+}
+
+model StarMark {
+  id String @id @default(cuid()) @map("_id")
+  userId String @map("user_id")
+  playgroundId String @map("playground_id")
+  isMarked Boolean @default(false)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  playground Playground @relation(fields: [playgroundId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, playgroundId])
+  @@map("star_marks")
+}
+
+
+
