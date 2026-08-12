@@ -9,7 +9,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { FaGithub } from "react-icons/fa";
+
 import { FcGoogle } from "react-icons/fc";
 import { signIn } from "@/auth";
 
@@ -18,10 +18,7 @@ async function handleGoogleSignIn(){
 await signIn("google")
 }
 
-async function handleGithubSignIn(){
-"use server"
-await signIn("github")
-}
+
 
 const SignInFormClient = () => {
   return (
@@ -42,12 +39,7 @@ const SignInFormClient = () => {
             <span>Sign in with google</span>
           </Button>
         </form>
-        <form action={handleGithubSignIn}>
-          <Button type="submit" variant={"outline"} className="w-full">
-            <FaGithub className="mr-2 h-4 w-4" />
-            <span>Sign in with github</span>
-          </Button>
-        </form>
+        
       </CardContent>
 
       <CardFooter>
