@@ -4,7 +4,7 @@ import { db } from "@/lib/db";
 import { currentUser } from "@/modules/auth/actions";
 import { revalidatePath } from "next/cache";
 
-/*export const toggleStarMarked = async (
+export const toggleStarMarked = async (
   playgroundId: string,
   isChecked: boolean
 ) => {
@@ -41,7 +41,7 @@ import { revalidatePath } from "next/cache";
        console.error("Error updating problem:", error);
     return { success: false, error: "Failed to update problem" };
   }
-};*/
+}
 
 export const getAllPlaygroundForUser = async () => {
   const user = await currentUser();

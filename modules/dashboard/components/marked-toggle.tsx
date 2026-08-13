@@ -6,7 +6,7 @@ import { StarIcon, StarOffIcon } from "lucide-react"
 import type React from "react"
 import { useState, useEffect, forwardRef } from "react"
 import { toast } from "sonner"
-// import { toggleStarMarked } from "../actions"
+import { toggleStarMarked } from "../actions"
 
 interface MarkedToggleButtonProps extends React.ComponentPropsWithoutRef<typeof Button> {
   markedForRevision: boolean
@@ -29,15 +29,15 @@ export const MarkedToggleButton = forwardRef<HTMLButtonElement, MarkedToggleButt
       setIsMarked(newMarkedState)
 
       try {
-        // const res = await toggleStarMarked(id, newMarkedState)
-        // const {success ,error , isMarked} = res;
+        const res = await toggleStarMarked(id, newMarkedState)
+        const {success ,error , isMarked} = res;
 
-    //    if ismarked true then show marked successfully otherwise show start over
-        // if (isMarked && !error && success) {
-        //   toast.success("Added to Favorites successfully")
-        // } else {
-        //   toast.success("Removed from Favorites successfully")
-        // }
+       //if ismarked true then show marked successfully otherwise show start over
+        if (isMarked && !error && success) {
+          toast.success("Added to Favorites successfully")
+        } else {
+          toast.success("Removed from Favorites successfully")
+        }
 
 
 
