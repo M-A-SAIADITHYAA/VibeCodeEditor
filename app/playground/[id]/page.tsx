@@ -26,9 +26,10 @@ import {PlaygroundEditor} from "@/modules/playground/components/playground-edito
 import { TemplateFileTree } from "@/modules/playground/components/playground-explorer";
 import ToggleAI from "@/modules/playground/components/toggle-ai";
 import { useAISuggestions } from "@/modules/playground/hooks/useAISuggestion";
-import { useFileExplorer } from "@/modules/playground/hooks/useFileExplorer";
-import { usePlayground } from "@/modules/playground/hooks/usePlayground";
-import { findFilePath } from "@/modules/playground/lib.ts";
+import { useFileExplorer } from "@/modules/playgroud/hooks/useFileExplorer";
+import { usePlayground } from "@/modules/playgroud/hooks/usePlayground"
+";
+import { findFilePath } from "@/modules/playgroud/lib/index";
 import {
   TemplateFile,
   TemplateFolder,

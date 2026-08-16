@@ -14,6 +14,7 @@
     "@monaco-editor/react": "^4.7.0",
     "@prisma/client": "^6.19.3",
     "@shadcn/react": "^0.3.0",
+    "@webcontainer/api": "^1.6.4",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",
