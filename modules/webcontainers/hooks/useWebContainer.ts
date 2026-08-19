@@ -11,7 +11,7 @@ interface UseWebContaierReturn {
   isLoading: boolean;
   error: string | null;
   instance: WebContainer | null;
-  writeFileSync: (path: string, content: string) => Promise<void>;jkjkj
+  writeFileSync: (path: string, content: string) => Promise<void>;
   destory: () => void;
 }
 
