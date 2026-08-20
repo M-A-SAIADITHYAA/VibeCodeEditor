@@ -6,6 +6,8 @@ interface TemplateItem {
   items?: TemplateItem[];
 }
 
+// what this file does is it takes the template data and transforms it into a format that can be used by the WebContainer API. 
+// The WebContainer API expects a specific structure for files and directories, so we need to convert our template data into that structure.
 interface WebContainerFile {
   file: {
     contents: string;
