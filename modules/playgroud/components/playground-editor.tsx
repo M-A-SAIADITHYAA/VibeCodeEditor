@@ -10,24 +10,24 @@ interface PlaygroundEditorProps {
   activeFile: TemplateFile | undefined
   content: string
   onContentChange: (value: string) => void
-  suggestion: string | null
-  suggestionLoading: boolean
-  suggestionPosition: { line: number; column: number } | null
-  onAcceptSuggestion: (editor: any, monaco: any) => void
-  onRejectSuggestion: (editor: any) => void
-  onTriggerSuggestion: (type: string, editor: any) => void
+  suggestion?: string | null
+  suggestionLoading?: boolean
+  suggestionPosition?: { line: number; column: number } | null
+  onAcceptSuggestion?: (editor: any, monaco: any) => void
+  onRejectSuggestion?: (editor: any) => void
+  onTriggerSuggestion?: (type: string, editor: any) => void
 }
 
 export const PlaygroundEditor = ({
   activeFile,
   content,
   onContentChange,
-  suggestion,
-  suggestionLoading,
-  suggestionPosition,
-  onAcceptSuggestion,
-  onRejectSuggestion,
-  onTriggerSuggestion,
+  suggestion = null,
+  suggestionLoading = false,
+  suggestionPosition = null,
+  onAcceptSuggestion = () => {},
+  onRejectSuggestion = () => {},
+  onTriggerSuggestion = () => {},
 }: PlaygroundEditorProps) => {
   const editorRef = useRef<any>(null)
   const monacoRef = useRef<Monaco | null>(null)

@@ -7,25 +7,18 @@
 import {auth} from "@/auth"
 import {db} from "@/lib/db"
 
-export const getUserById = async (id:string)=>{
-    try{
-        const user = await db.user.findUnique({
-            where :{
-                id: id
-            },
+export const getUserById = async (id: string) => {
+    const user = await db.user.findUnique({
+        where: {
+            id: id
+        },
+        include: {
+            accounts: true
+        }
+    });
 
-            include:{
-                accounts:true
-            }
-        })
-
-        return user
-    }
-    catch(error){
-        console.log("Error fetching user by id:", error)
-        throw new Error("Error fetching user by id")
-    }
-}
+    return user;
+};
 
 export const getAccountByUserId = async (userId:string)=>{
     try{
