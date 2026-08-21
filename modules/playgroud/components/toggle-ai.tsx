@@ -26,7 +26,7 @@ import {
 } from "lucide-react";
 import React from "react";
 import { cn } from "@/lib/utils";
-import { AIChatSidePanel } from "@/modules/ai-chat/components/ai-chat-sidebarpanel";
+// import { AIChatSidePanel } from "@/modules/ai-chat/components/ai-chat-sidebarpanel";
 
 
 

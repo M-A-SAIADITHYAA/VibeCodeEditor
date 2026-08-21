@@ -24,8 +24,8 @@ import {
 import LoadingStep from "@/modules/playgroud/components/loader";
 import {PlaygroundEditor} from "@/modules/playgroud/components/playground-editor";
 import { TemplateFileTree } from "@/modules/playgroud/components/playground-explorer";
-import ToggleAI from "@/modules/playground/components/toggle-ai";
-// import { useAISuggestions } from "@/modules/playground/hooks/useAISuggestion";
+import ToggleAI from "@/modules/playgroud/components/toggle-ai";
+import { useAISuggestions } from "@/modules/playgroud/hooks/useAISuggestion";
 import { useFileExplorer } from "@/modules/playgroud/hooks/useFileExplorer";
 import { usePlayground } from "@/modules/playgroud/hooks/usePlayground"
 
@@ -62,7 +62,7 @@ const MainPlaygroundPage = () => {
   const { playgroundData, templateData, isLoading, error, saveTemplateData } =
     usePlayground(id);
 
-    // const aiSuggestions = useAISuggestions();
+    const aiSuggestions = useAISuggestions();
 
   const {
     setTemplateData,
